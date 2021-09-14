@@ -17,7 +17,7 @@ class InstanceRegisterController extends Controller
         $config = json_decode($request->config, true);
 
         $instance = Instance::create([
-            'name' => $config['app.name'],
+            'name' => $config['app']['name'],
             'uuid' => Uuid::uuid4()->toString(),
         ]);
 
