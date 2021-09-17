@@ -14,6 +14,7 @@ class Report extends Model
 
     protected $casts = [
         'composer_versions' => 'array',
+        'config' => 'array',
     ];
 
     public function instance()
