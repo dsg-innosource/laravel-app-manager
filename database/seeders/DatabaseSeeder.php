@@ -23,9 +23,9 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt(Str::random(10)),
         ]);
 
-        Instance::factory()
-            ->has(Report::factory()->count(2))
-            ->count(20)
-            ->create();
+        // Instance::factory()
+        //     ->has(Report::factory()->count(2))
+        //     ->count(20)
+        //     ->create();
     }
 }

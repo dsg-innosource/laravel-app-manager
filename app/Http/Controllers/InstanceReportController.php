@@ -9,6 +9,7 @@ class InstanceReportController extends Controller
 {
     public function __invoke(Request $request, $uuid)
     {
+        ray($request);
         $instance = Instance::where('uuid', $uuid)->firstOrFail();
 
         $instance->reports()->create([

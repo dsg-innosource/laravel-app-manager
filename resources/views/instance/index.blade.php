@@ -10,6 +10,9 @@
             <div class="grid space-x-4 lg:grid-cols-5">
                 <div>
                     <div class="text-xs tracking-widest text-gray-400 uppercase">Environment</div>
+                    @foreach($environments as $env)
+                        {{$env->name}}
+                    @endforeach
                 </div>
                 <div class="grid grid-cols-2 col-span-4 gap-4">
                     @foreach($instances as $instance)

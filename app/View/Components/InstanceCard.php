@@ -19,7 +19,14 @@ class InstanceCard extends Component
     public function __construct(Instance $instance)
     {
         $this->instance = $instance;
-        $this->env = $instance->latest_report->config['app']['env'];
+        $this->env = $instance->latest_report->environment->name;
+    }
+
+    public function getCustomPackageVersions()
+    {
+        return $this->instance->latest_report->packages->filter(function ($package) {
+            return in_array($package->name, config('lam.packages'));
+        })->toArray();
     }
 
     /**

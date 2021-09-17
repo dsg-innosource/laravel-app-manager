@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Environment;
 use App\Models\Instance;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
@@ -10,6 +11,7 @@ class InstanceRegisterController extends Controller
 {
     public function __invoke(Request $request)
     {
+        ray($request);
         $request->validate([
             'config' => 'required',
         ]);
@@ -21,12 +23,21 @@ class InstanceRegisterController extends Controller
             'uuid' => Uuid::uuid4()->toString(),
         ]);
 
-        $instance->reports()->create([
+        $environment = Environment::firstOrCreate(['name' => $config['app']['env']]);
+
+        $report = $instance->reports()->create([
+            'environment_id' => $environment->id,
             'php_version' => $request->php_version,
             'database_version' => $request->database_version,
-            'composer_versions' => $request->composer_versions,
             'config' => $request->config,
         ]);
+
+        collect($request->composer_versions)->each(function ($version, $name) use ($report) {
+            $report->packages()->create([
+                'name' => $name,
+                'version' => $version,
+            ]);
+        });
 
         return response()->json([
             'status' => 'success',

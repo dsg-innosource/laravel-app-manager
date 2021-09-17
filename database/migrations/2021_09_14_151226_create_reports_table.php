@@ -11,10 +11,10 @@ class CreateReportsTable extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('instance_id');
+            $table->unsignedBigInteger('environment_id');
             $table->string('php_version')->nullable();
             $table->string('database_version')->nullable();
             $table->json('config')->nullable();
-            $table->json('composer_versions')->nullable();
             $table->timestamps();
         });
     }

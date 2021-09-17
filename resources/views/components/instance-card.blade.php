@@ -4,8 +4,11 @@
         <div class="bg-gray-100">
             {{$env}}
         </div>
-        @if($instance->latest_report->composer_versions['psy/psysh'])
-            {{$instance->latest_report->composer_versions['psy/psysh']}}
-        @endif
+        @foreach ($getCustomPackageVersions as $package)
+            <div class="flex justify-between">
+                <div>{{ $package['name'] }}</div>
+                <div>{{ $package['version'] }}</div>
+            </div>
+        @endforeach
     </div>
 </div>

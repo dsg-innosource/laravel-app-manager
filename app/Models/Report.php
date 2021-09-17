@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Instance;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,5 +19,15 @@ class Report extends Model
     public function instance()
     {
         return $this->belongsTo(Instance::class);
+    }
+
+    public function environment()
+    {
+        return $this->belongsTo(Environment::class);
+    }
+
+    public function packages()
+    {
+        return $this->hasMany(Package::class);
     }
 }
