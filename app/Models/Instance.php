@@ -17,6 +17,11 @@ class Instance extends Model
         return $this->hasMany(Report::class);
     }
 
+    public function recent_reports()
+    {
+        return $this->hasMany(Report::class)->latest()->take(10);
+    }
+
     public function latest_report()
     {
         return $this->hasOne(Report::class)->ofMany();

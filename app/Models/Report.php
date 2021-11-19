@@ -30,4 +30,24 @@ class Report extends Model
     {
         return $this->hasMany(Package::class);
     }
+
+    public function getCustomPackageVersionsAttribute()
+    {
+        return collect(config('lam.packages'))->map(function ($highlightedPackage) {
+            if ($this->packages) {
+                $matchingPackage = $this->packages->filter(function ($package) use ($highlightedPackage) {
+                    return $package->name == $highlightedPackage;
+                });
+
+                if ($matchingPackage->count()) {
+                    $version = $matchingPackage->first()->version;
+                }
+            }
+
+            return [
+                'name' => $highlightedPackage,
+                'version' => $version ?? '',
+            ];
+        })->toArray();
+    }
 }

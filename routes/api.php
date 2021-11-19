@@ -16,4 +16,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('register', InstanceRegisterController::class);
-Route::post('report/{uuid}', InstanceReportController::class);
+Route::post('report/{uuid}', [InstanceReportController::class, 'store']);

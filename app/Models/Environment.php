@@ -10,4 +10,11 @@ class Environment extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    protected $appends = ['color'];
+
+    public function getColorAttribute()
+    {
+        return config("lam.environment_colors.{$this->name}") ? config("lam.environment_colors.{$this->name}") : 'brand';
+    }
 }

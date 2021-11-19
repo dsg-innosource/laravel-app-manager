@@ -11,7 +11,6 @@ class InstanceRegisterController extends Controller
 {
     public function __invoke(Request $request)
     {
-        ray($request);
         $request->validate([
             'config' => 'required',
         ]);
@@ -29,7 +28,7 @@ class InstanceRegisterController extends Controller
             'environment_id' => $environment->id,
             'php_version' => $request->php_version,
             'database_version' => $request->database_version,
-            'config' => $request->config,
+            'config' => $config,
         ]);
 
         collect($request->composer_versions)->each(function ($version, $name) use ($report) {
