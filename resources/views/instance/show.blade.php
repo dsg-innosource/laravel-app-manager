@@ -52,7 +52,7 @@
             <div class="my-8">
                 <div class="grid grid-cols-2 gap-4">
                     <div class="overflow-hidden bg-white rounded-lg shadow">
-                        <div class="px-3 pt-3 text-xs font-bold tracking-wider text-gray-400 uppercase">Tracked Packages</div>
+                        <div class="px-3 pt-3 text-xs tracking-widest text-gray-400 uppercase">Tracked Packages</div>
                         <div class="px-6 py-2 text-sm text-gray-700 divide-y divide-gray-100 sm:p-4">
                             @foreach ($instance->latest_report->custom_package_versions as $package)
                             <div class="flex justify-between py-1">
@@ -68,7 +68,7 @@
                     </div>
                     @if ( $instance->latest_report->config['custom'] )
                         <div class="overflow-hidden bg-white rounded-lg shadow">
-                            <div class="px-3 pt-3 text-xs font-bold tracking-wider text-gray-400 uppercase">Custom Data</div>
+                            <div class="px-3 pt-3 text-xs tracking-widest text-gray-400 uppercase">Custom Data</div>
                             <div class="px-6 py-2 text-sm text-gray-700 divide-y divide-gray-100 sm:p-4">
                                 @foreach ($instance->latest_report->config['custom'] as $key => $value)
                                     <div class="flex justify-between py-1">
