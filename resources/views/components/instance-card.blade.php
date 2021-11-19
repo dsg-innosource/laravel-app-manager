@@ -17,7 +17,9 @@
         </div>
         <div class="flex justify-between text-xs">
             <div>
-                <div class="rounded-md px-2 py-px uppercase tracking-wider bg-{{$env->color}}-200 text-{{$env->color}}-800">{{$env->name}}</div>
+                @if($env)
+                    <div class="rounded-md px-2 py-px uppercase tracking-wider bg-{{$env->color}}-200 text-{{$env->color}}-800">{{$env->name}}</div>
+                @endif
             </div>
             <div class="text-gray-600">{{ $formattedLatestReportCreatedAt }}</div>
         </div>

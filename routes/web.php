@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InstanceController;
 use App\Http\Controllers\InstanceReportController;
+use App\Http\Controllers\PackageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,9 +26,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('instances/{instance}', [InstanceController::class, 'show'])->name('instances.show');
     Route::get('instances/{instance}/reports/{report}', [InstanceReportController::class, 'show'])->name('reports.show');
     
-    Route::get('packages/{package}', function ($package) {
-        return "{$package}";
-    })->where('package', '.*\/.*')->name('packages.show');
+    Route::get('packages/{package}', [PackageController::class, 'show'])->where('package', '.*\/.*')->name('packages.show');
 });
 
 Route::get('dashboard', DashboardController::class)->name('dashboard');
