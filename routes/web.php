@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InstanceController;
 use App\Http\Controllers\InstanceReportController;
 use App\Http\Controllers\PackageController;
@@ -28,7 +27,5 @@ Route::middleware(['auth'])->group(function () {
     
     Route::get('packages/{package}', [PackageController::class, 'show'])->where('package', '.*\/.*')->name('packages.show');
 });
-
-Route::get('dashboard', DashboardController::class)->name('dashboard');
 
 require __DIR__ . '/auth.php';
