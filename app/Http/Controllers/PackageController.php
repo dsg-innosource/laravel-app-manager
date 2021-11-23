@@ -6,6 +6,25 @@ use App\Models\Instance;
 
 class PackageController extends Controller
 {
+    public function index()
+    {
+        $packages = Instance::all()
+            ->map->latest_report
+            ->map->packages
+            ->flatten()
+            ->map(function ($pkg) {
+                return [
+                    'name' => $pkg->name,
+                    'version' => $pkg->version,
+                ];
+            })->unique()
+            ->groupBy('name');
+
+        return view('package.index', [
+            'packages' => $packages,
+        ]);
+    }
+
     public function show($package)
     {
         $instances = Instance::select('instances.id', 'instances.name')

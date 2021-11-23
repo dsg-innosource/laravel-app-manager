@@ -25,6 +25,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('instances/{instance}', [InstanceController::class, 'show'])->name('instances.show');
     Route::get('instances/{instance}/reports/{report}', [InstanceReportController::class, 'show'])->name('reports.show');
     
+    Route::get('packages', [PackageController::class, 'index'])->name('packages.index');
     Route::get('packages/{package}', [PackageController::class, 'show'])->where('package', '.*\/.*')->name('packages.show');
 });
 
