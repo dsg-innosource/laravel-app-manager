@@ -34,4 +34,25 @@ class InstanceController extends Controller
             'instance' => $instance,
         ]);
     }
+
+    public function edit(Instance $instance)
+    {
+        return view('instance.edit', [
+            'instance' => $instance,
+        ]);
+    }
+
+    public function update(Instance $instance)
+    {
+        request()->validate([
+            'instance_name' => 'required',
+        ], [
+            'instance_name.required' => 'Please provide a name for this instance.',
+        ]);
+
+        $instance->name = request()->instance_name;
+        $instance->save();
+
+        return redirect()->route('instances.show', $instance);
+    }
 }

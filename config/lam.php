@@ -10,7 +10,7 @@ return [
 
     // For each environment you want color coded enter the
     // class name from the Tailwind color palette
-    
+
     'environment_colors' => [
         'local' => 'gray',
         'test' => 'blue',

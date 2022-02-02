@@ -1,10 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            {{ $instance->name }}
-        </h2>
+        <div class="flex items-center justify-between">
+            <h2 class="text-xl font-semibold leading-tight text-gray-800">
+                {{ $instance->name }}
+            </h2>
+            <a href="{{ route('instances.edit', ['instance' => $instance->id]) }}">Edit</a>
+        </div>
     </x-slot>
-    
+
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="mb-8">
@@ -22,7 +25,7 @@
                             </div>
                         </dd>
                     </div>
-                    
+
                     <div class="px-4 py-5 sm:p-6">
                         <dt class="text-base font-normal text-gray-900">
                             DB Version
@@ -36,7 +39,7 @@
                             </div>
                         </dd>
                     </div>
-                    
+
                     <div class="px-4 py-5 sm:p-6">
                         <dt class="text-base font-normal text-gray-900">
                             OS Version

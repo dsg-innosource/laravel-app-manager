@@ -23,8 +23,10 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('instances', [InstanceController::class, 'index'])->name('instances.index');
     Route::get('instances/{instance}', [InstanceController::class, 'show'])->name('instances.show');
+    Route::patch('instances/{instance}', [InstanceController::class, 'update'])->name('instances.update');
+    Route::get('instances/{instance}/edit', [InstanceController::class, 'edit'])->name('instances.edit');
     Route::get('instances/{instance}/reports/{report}', [InstanceReportController::class, 'show'])->name('reports.show');
-    
+
     Route::get('packages', [PackageController::class, 'index'])->name('packages.index');
     Route::get('packages/{package}', [PackageController::class, 'show'])->where('package', '.*\/.*')->name('packages.show');
 });
